@@ -78,9 +78,17 @@ public class RegisterActivity extends AppCompatActivity {
                           
                       }else {
                           Toast.makeText(RegisterActivity.this, "Error " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                          progressBar.setVisibility(View.GONE);
                       }
                   }
               });
+
+            }
+        });
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
             }
         });
     }
