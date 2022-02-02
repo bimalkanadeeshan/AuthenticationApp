@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AuthenticationApp</string>
+    <string name="invalid_name">Please Enter Valid Name</string>
+    <string name="invalid_mobile">Please Enter a Valid Number</string>
+    <string name="invalid_email">Please Enter a Valid Email Adress</string>
+    <string name="invalid_password">Enter Six Digit Password</string>
 </resources>

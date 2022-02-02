@@ -50,19 +50,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mLogoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fAuth.signOut(); //logout user
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-            }
-        });
-
     }
 
-//    public void logout(View view) {
-//        FirebaseAuth.getInstance().signOut(); //logout user
-//        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-//        finish();
-//    }
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut(); //logout user
+        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        finish();
+    }
 }
