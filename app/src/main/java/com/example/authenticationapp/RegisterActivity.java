@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -29,7 +30,7 @@ import java.util.regex.Pattern;
 
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText mFullName,mEmail,mPassword,mPhone;
+    TextInputLayout mFullName,mEmail,mPassword,mPhone;
     Button mRegisterBtn;
     TextView mLoginBtn;
     FirebaseAuth fAuth;
@@ -62,10 +63,11 @@ public class RegisterActivity extends AppCompatActivity {
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              String email    = mEmail.getText().toString().trim();
-              String password = mPassword.getText().toString().trim();
-              String fullName = mFullName.getText().toString();
-              String phone    = mPhone.getText().toString();
+
+              String email    = mEmail.getEditText().getText().toString();
+              String password = mPassword.getEditText().getText().toString();
+              String fullName = mFullName.getEditText().getText().toString();
+              String phone    = mPhone.getEditText().getText().toString();
 
               //Validate Phone Number
               Pattern p = Pattern.compile("[0][0-9]{9}");
@@ -73,28 +75,38 @@ public class RegisterActivity extends AppCompatActivity {
               if(!m.matches()){
                   mPhone.setError("Please Enter a Valid Phone Number.");
                   return;
+              }else{
+                  mPhone.setError("");
               }
 
               //Validate Name
               if(TextUtils.isEmpty(fullName)){
                     mFullName.setError("Name is Required.");
                     return;
+              }else{
+                  mFullName.setError("");
               }
 
               //Validate Email
               if(TextUtils.isEmpty(email)){
                   mEmail.setError("Email is Required.");
                   return;
+              }else{
+                  mEmail.setError("");
               }
 
               //Validate Password
               if(TextUtils.isEmpty(password)){
                   mPassword.setError("Password is Required.");
                   return;
+              }else{
+                  mPassword.setError("");
               }
               if(password.length() < 6){
                   mPassword.setError("Password Must be >= 6 Characters");
                   return;
+              }else{
+                  mPassword.setError("");
               }
 
               progressBar.setVisibility(View.VISIBLE);
